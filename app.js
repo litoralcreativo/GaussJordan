@@ -88,17 +88,7 @@ const AddDomMatrix = (mat, paso = "") => {
               let str = "<div class='row'><h2>";
               for (let i = 0; i < row.length - 1; i++) {
                 const element = row[i].toString();
-                switch (element.length) {
-                  case 1:
-                    str += element + "</h2><h2>";
-                    break;
-                  case 2:
-                    str += element + "</h2><h2>";
-                    break;
-                  case 3:
-                    str += element + "</h2><h2>";
-                    break;
-                }
+                str += element + "</h2><h2>";
               }
               str += "|</h2><h2>" + row[row.length - 1] + "</h2></div>";
               return str;
@@ -158,10 +148,25 @@ const ProcessMatrix = (index) => {
   return false;
 };
 
+const startProcess = () => {
+  const p1 = document.getElementById("primeraPantalla");
+  const p2 = document.getElementById("segundaPantalla");
+
+  p1.className = "container c-hide";
+  p2.className = "container";
+
+  GaussJordan(matrix);
+  return false;
+};
+
 let op = "x";
 const toogleOpBtn = (e) => {
   op = op == "x" ? "/" : "x";
   e.innerHTML = op;
+};
+
+const changeMatrix = (r, c, val) => {
+  matrix[r][c] = val;
 };
 
 const changeEcuation = (element) => {
@@ -178,9 +183,24 @@ const changeEcuation = (element) => {
       let z = document.getElementById("r1_z").value;
       let res = document.getElementById("r1_res").value;
 
+      changeMatrix(0, 0, parseFloat(x));
+      changeMatrix(0, 1, parseFloat(y));
+      changeMatrix(0, 2, parseFloat(z));
+      changeMatrix(0, 3, parseFloat(res));
+
       x = x != 0 ? x + "x" : "";
-      y = y != 0 ? (y < 0 ? "- " + Math.abs(y) + "y" : "+ " + y + "y") : "";
-      z = z != 0 ? (z < 0 ? "- " + Math.abs(z) + "z" : "+ " + z + "z") : "";
+      y =
+        y != 0
+          ? y < 0
+            ? "- " + Math.abs(y) + "y"
+            : (x == 0 ? "" : "+ ") + y + "y"
+          : "";
+      z =
+        z != 0
+          ? z < 0
+            ? "- " + Math.abs(z) + "z"
+            : (y == 0 && x == 0 ? "" : "+ ") + z + "z"
+          : "";
       res = res != 0 ? res : "";
 
       e1.innerHTML = `
@@ -198,9 +218,24 @@ const changeEcuation = (element) => {
       let z = document.getElementById("r2_z").value;
       let res = document.getElementById("r2_res").value;
 
+      changeMatrix(1, 0, parseFloat(x));
+      changeMatrix(1, 1, parseFloat(y));
+      changeMatrix(1, 2, parseFloat(z));
+      changeMatrix(1, 3, parseFloat(res));
+
       x = x != 0 ? x + "x" : "";
-      y = y != 0 ? (y < 0 ? "- " + Math.abs(y) + "y" : "+ " + y + "y") : "";
-      z = z != 0 ? (z < 0 ? "- " + Math.abs(z) + "z" : "+ " + z + "z") : "";
+      y =
+        y != 0
+          ? y < 0
+            ? "- " + Math.abs(y) + "y"
+            : (x == 0 ? "" : "+ ") + y + "y"
+          : "";
+      z =
+        z != 0
+          ? z < 0
+            ? "- " + Math.abs(z) + "z"
+            : (y == 0 && x == 0 ? "" : "+ ") + z + "z"
+          : "";
       res = res != 0 ? res : "";
 
       e2.innerHTML = `
@@ -218,9 +253,24 @@ const changeEcuation = (element) => {
       let z = document.getElementById("r3_z").value;
       let res = document.getElementById("r3_res").value;
 
+      changeMatrix(2, 0, parseFloat(x));
+      changeMatrix(2, 1, parseFloat(y));
+      changeMatrix(2, 2, parseFloat(z));
+      changeMatrix(2, 3, parseFloat(res));
+
       x = x != 0 ? x + "x" : "";
-      y = y != 0 ? (y < 0 ? "- " + Math.abs(y) + "y" : "+ " + y + "y") : "";
-      z = z != 0 ? (z < 0 ? "- " + Math.abs(z) + "z" : "+ " + z + "z") : "";
+      y =
+        y != 0
+          ? y < 0
+            ? "- " + Math.abs(y) + "y"
+            : (x == 0 ? "" : "+ ") + y + "y"
+          : "";
+      z =
+        z != 0
+          ? z < 0
+            ? "- " + Math.abs(z) + "z"
+            : (y == 0 && x == 0 ? "" : "+ ") + z + "z"
+          : "";
       res = res != 0 ? res : "";
 
       e3.innerHTML = `
@@ -231,5 +281,3 @@ const changeEcuation = (element) => {
     }
   }
 };
-
-GaussJordan(matrix);

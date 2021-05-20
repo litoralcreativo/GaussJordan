@@ -10,159 +10,165 @@
   <body>
     <div id="primeraPantalla" class="container">
       <h1 style="margin: 20px 0px">Eliminación de Gauss-Jordan</h1>
-      <h3>Ingrese una matriz</h3>
-      <div id="matrixFirstInput">
-        <h1 class="main-matrix-row">
-          R<sub>1</sub>:
-          <input
-            onchange="changeEcuation(this)"
-            id="r1_x"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="x"
-            required
-          />
-          <input
-            onchange="changeEcuation(this)"
-            id="r1_y"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="y"
-            required
-          />
-          <input
-            onchange="changeEcuation(this)"
-            id="r1_z"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="z"
-            required
-          />
-          |
-          <input
-            onchange="changeEcuation(this)"
-            id="r1_res"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="..."
-            required
-          />
-        </h1>
-        <h1 class="main-matrix-row">
-          R<sub>2</sub>:
-          <input
-            id="r2_x"
-            onchange="changeEcuation(this)"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="x"
-            required
-          />
-          <input
-            id="r2_y"
-            onchange="changeEcuation(this)"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="y"
-            required
-          />
-          <input
-            id="r2_z"
-            onchange="changeEcuation(this)"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="z"
-            required
-          />
-          |
-          <input
-            id="r2_res"
-            onchange="changeEcuation(this)"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="..."
-            required
-          />
-        </h1>
-        <h1 class="main-matrix-row">
-          R<sub>3</sub>:
-          <input
-            id="r3_x"
-            onchange="changeEcuation(this)"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="x"
-            required
-          />
-          <input
-            id="r3_y"
-            onchange="changeEcuation(this)"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="y"
-            required
-          />
-          <input
-            id="r3_z"
-            onchange="changeEcuation(this)"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="z"
-            required
-          />
-          |
-          <input
-            id="r3_res"
-            onchange="changeEcuation(this)"
-            class="scalar-input"
-            style="padding: 5px"
-            type="number"
-            min="-999"
-            max="999"
-            placeholder="..."
-            required
-          />
-        </h1>
-        <br />
-        <h3 id="equation_1"></h3>
-        <h3 id="equation_2"></h3>
-        <h3 id="equation_3"></h3>
-      </div>
+      <h2 style="margin-bottom: 10px">Ingrese una matriz</h2>
+      <form id="matrixFirstInput" onsubmit="return startProcess()">
+        <div id="main-matrix-rows">
+          <h1 class="main-matrix-row">
+            R<sub>1</sub>:
+            <input
+              onchange="changeEcuation(this)"
+              id="r1_x"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="x"
+              required
+            />
+            <input
+              onchange="changeEcuation(this)"
+              id="r1_y"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="y"
+              required
+            />
+            <input
+              onchange="changeEcuation(this)"
+              id="r1_z"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="z"
+              required
+            />
+            |
+            <input
+              onchange="changeEcuation(this)"
+              id="r1_res"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="..."
+              required
+            />
+          </h1>
+          <h1 class="main-matrix-row">
+            R<sub>2</sub>:
+            <input
+              id="r2_x"
+              onchange="changeEcuation(this)"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="x"
+              required
+            />
+            <input
+              id="r2_y"
+              onchange="changeEcuation(this)"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="y"
+              required
+            />
+            <input
+              id="r2_z"
+              onchange="changeEcuation(this)"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="z"
+              required
+            />
+            |
+            <input
+              id="r2_res"
+              onchange="changeEcuation(this)"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="..."
+              required
+            />
+          </h1>
+          <h1 class="main-matrix-row">
+            R<sub>3</sub>:
+            <input
+              id="r3_x"
+              onchange="changeEcuation(this)"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="x"
+              required
+            />
+            <input
+              id="r3_y"
+              onchange="changeEcuation(this)"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="y"
+              required
+            />
+            <input
+              id="r3_z"
+              onchange="changeEcuation(this)"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="z"
+              required
+            />
+            |
+            <input
+              id="r3_res"
+              onchange="changeEcuation(this)"
+              class="scalar-input main-matrix-i"
+              style="padding: 5px"
+              type="number"
+              min="-999"
+              max="999"
+              placeholder="..."
+              required
+            />
+          </h1>
+        </div>
+        <div id="equations">
+          <h2 class="equation" id="equation_1"></h2>
+          <h2 class="equation" id="equation_2"></h2>
+          <h2 class="equation" id="equation_3"></h2>
+        </div>
+        <button type="submit" class="btn-procesar" id="iniciarProcesoGJ">
+          Iniciar proceso
+        </button>
+      </form>
     </div>
-    <div id="primeraPantalla" style="display: none" class="container">
+    <div id="segundaPantalla" class="container c-hide">
       <h1 style="margin: 20px 0px">Eliminación de Gauss-Jordan</h1>
       <div id="matrices-container"></div>
       <div id="math-container">
