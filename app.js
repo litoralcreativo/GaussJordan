@@ -306,22 +306,23 @@ const CheckMatrix = (mat) => {
 
   if (indeterminate) {
     lastMatrix.style.backgroundColor = "rgb(255, 255, 100)";
-    console.warn(
-      "Sistema compatible indeterminado:\n\tn° de ecuaciones < n° de incognitas"
-    );
-    disableMath();
+    showResult("Sistema compatible indeterminado", "rgb(255, 255, 100)");
   }
   if (incompatible) {
     lastMatrix.style.backgroundColor = "rgb(255, 100, 100)";
-    console.warn("Sistema incompatible:\n\texiste alguna ecuación absurda,");
-    disableMath();
+    showResult("Sistema incompatible", "rgb(255, 100, 100)");
   }
   if (compatible) {
     lastMatrix.style.backgroundColor = "rgb(100, 255, 100)";
-    console.warn(
-      "Sistema compatible determinado:\n\tn° de ecuaciones = n° de incognitas"
-    );
+    showResult("Sistema compatible determinado", "rgb(100, 255, 100)");
   }
+};
+
+const showResult = (msg, color) => {
+  const result = document.getElementById("result");
+  result.innerText = msg;
+  result.style.color = color;
+  result.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
 };
 
 const disableMath = () => {
