@@ -102,6 +102,12 @@
   align-items: center;
 }
 
+.disable-container {
+  opacity: 0.5;
+  pointer-events: none;
+  /* background-color: rgba(0, 0, 0, 0.2); */
+}
+
 .process-type {
   display: flex;
   flex-direction: row;

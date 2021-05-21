@@ -177,6 +177,7 @@
             R<sub
               ><input
                 id="p1_r1"
+                onchange="document.getElementById('scalar-target-subindex').innerHTML = this.value"
                 class="row-input"
                 type="number"
                 min="1"
@@ -206,15 +207,7 @@
               min="-999"
               max="999"
               required
-            />) ⟶ R<sub
-              ><input
-                id="p1_target"
-                class="row-input"
-                type="number"
-                min="1"
-                max="3"
-                required
-            /></sub>
+            />) ⟶ R<sub id="scalar-target-subindex"> </sub>
           </h1>
           <button type="submit" class="btn-procesar">Procesar</button>
         </form>
@@ -247,7 +240,7 @@
               ><input
                 id="p3_r1"
                 class="row-input"
-                onchange="document.getElementById('scalar-target-subindex').innerHTML = this.value"
+                onchange="document.getElementById('scalar-target-subindex-2').innerHTML = this.value"
                 type="number"
                 min="1"
                 max="3"
@@ -262,7 +255,7 @@
               min="-999"
               max="999"
               required
-            />) ⟶ R<sub id="scalar-target-subindex"></sub>
+            />) ⟶ R<sub id="scalar-target-subindex-2"></sub>
           </h1>
           <button type="submit" class="btn-procesar">Procesar</button>
         </form>

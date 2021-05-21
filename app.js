@@ -1,7 +1,7 @@
 let matrix = [
-  [1, 1, -1, 7],
-  [1, -1, 2, 3],
-  [2, 1, 1, 9],
+  [1, 0, -1, 7],
+  [0, -1, 0, 3],
+  [0, 0, -1, 8],
 ];
 let contador = 0;
 const GaussJordan = (mat) => {
@@ -101,6 +101,7 @@ const AddDomMatrix = (mat, paso = "") => {
   document
     .getElementById("matrices-container")
     .insertAdjacentHTML("beforeend", element);
+  CheckMatrix(mat);
 };
 
 const ProcessMatrix = (index) => {
@@ -108,7 +109,7 @@ const ProcessMatrix = (index) => {
     case 1: {
       const r1 = document.getElementById("p1_r1");
       const r2 = document.getElementById("p1_r2");
-      const target = document.getElementById("p1_target");
+      const target = document.getElementById("p1_r1");
       const p1 = document.getElementById("p1_coef1");
       const p2 = document.getElementById("p1_coef2");
       matrix = SumAndProd(
@@ -280,4 +281,54 @@ const changeEcuation = (element) => {
       break;
     }
   }
+};
+
+const CheckMatrix = (mat) => {
+  const lastMatrix =
+    document.getElementById("matrices-container").lastElementChild;
+
+  let indeterminate = false;
+  let incompatible = false;
+  let compatible = false;
+
+  let good_eq = 0;
+  mat.forEach((element) => {
+    let nums = 0;
+    for (let i = 0; i < element.length; i++) {
+      const n = element[i];
+      nums += n != 0 ? 1 : 0;
+    }
+    if (nums == 0) indeterminate = true;
+    if (nums == 1) incompatible = true;
+    if (nums == 2) good_eq++;
+  });
+  if (good_eq == 3) compatible = true;
+
+  if (indeterminate) {
+    lastMatrix.style.backgroundColor = "rgb(255, 255, 100)";
+    console.warn(
+      "Sistema compatible indeterminado:\n\tn° de ecuaciones < n° de incognitas"
+    );
+    disableMath();
+  }
+  if (incompatible) {
+    lastMatrix.style.backgroundColor = "rgb(255, 100, 100)";
+    console.warn("Sistema incompatible:\n\texiste alguna ecuación absurda,");
+    disableMath();
+  }
+  if (compatible) {
+    lastMatrix.style.backgroundColor = "rgb(100, 255, 100)";
+    console.warn(
+      "Sistema compatible determinado:\n\tn° de ecuaciones = n° de incognitas"
+    );
+  }
+};
+
+const disableMath = () => {
+  const mc = document.getElementById("math-container");
+  mc.className = "disable-container";
+};
+const enableMath = () => {
+  const mc = document.getElementById("math-container");
+  mc.className = "";
 };
