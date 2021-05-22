@@ -288,7 +288,7 @@ const changeEcuation = (element) => {
     }
   }
 };
-
+let status = 0;
 const CheckMatrix = (mat) => {
   const lastMatrix =
     document.getElementById("matrices-container").lastElementChild;
@@ -313,14 +313,17 @@ const CheckMatrix = (mat) => {
   if (indeterminate) {
     lastMatrix.style.backgroundColor = "rgb(255, 255, 100)";
     showResult("Sistema compatible indeterminado", "rgb(255, 255, 100)");
+    status = 1;
   }
   if (incompatible) {
     lastMatrix.style.backgroundColor = "rgb(255, 100, 100)";
     showResult("Sistema incompatible", "rgb(255, 100, 100)");
+    status = 2;
   }
   if (compatible) {
     lastMatrix.style.backgroundColor = "rgb(100, 255, 100)";
     showResult("Sistema compatible determinado", "rgb(100, 255, 100)");
+    status = 3;
   }
 };
 

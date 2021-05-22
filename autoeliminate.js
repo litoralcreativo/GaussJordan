@@ -92,10 +92,47 @@ const automate = () => {
     }
   }
   lastSteps = true;
+  if (status != 3) return;
   if (op == "x") document.getElementById("operation-btn").click();
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length - 1; j++) {
       if (i == j) matrix = ScalarProd(matrix, i + 1, matrix[i][j]);
     }
   }
+  AddDomMatrix_results(matrix);
+};
+
+const AddDomMatrix_results = (mat) => {
+  const element = `
+    <div class="matrix" style="background-color: blue">
+      <div class="titlulo">
+      
+        <h3>Resultados: </h3>
+      </div>
+        ${mat
+          .map((row, i) => {
+            let variable = "x";
+            switch (i) {
+              case 0:
+                variable = "x";
+                break;
+              case 1:
+                variable = "y";
+                break;
+              case 2:
+                variable = "z";
+                break;
+              case 3:
+                variable = "t";
+                break;
+            }
+            return `<h3>${variable} = ${row[row.length - 1]}</h3>`;
+          })
+          .join("")}
+      
+    </div>
+  `;
+  document
+    .getElementById("matrices-container")
+    .insertAdjacentHTML("beforeend", element);
 };
