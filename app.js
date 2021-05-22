@@ -1,7 +1,7 @@
 let matrix = [
   [1, 0, -1, 7],
-  [0, -1, 0, 3],
-  [0, 0, -1, 8],
+  [2, -1, 0, 3],
+  [5, 6, -1, 8],
 ];
 let contador = 0;
 const GaussJordan = (mat) => {
