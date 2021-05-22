@@ -91,10 +91,11 @@ const automate = () => {
         stepForward(j + 1, i + 1, i + 1);
     }
   }
-  // if (!CheckMatrixSolution(matrix)) stepForward(2, 1, 1);
-  // if (!CheckMatrixSolution(matrix)) stepForward(3, 1, 1);
-  // if (!CheckMatrixSolution(matrix)) stepForward(1, 2, 2);
-  // if (!CheckMatrixSolution(matrix)) stepForward(3, 2, 2);
-  // if (!CheckMatrixSolution(matrix)) stepForward(1, 3, 3);
-  // if (!CheckMatrixSolution(matrix)) stepForward(2, 3, 3);
+  lastSteps = true;
+  if (op == "x") document.getElementById("operation-btn").click();
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length - 1; j++) {
+      if (i == j) matrix = ScalarProd(matrix, i + 1, matrix[i][j]);
+    }
+  }
 };

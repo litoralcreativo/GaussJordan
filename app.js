@@ -4,6 +4,7 @@ let matrix = [
   [5, 6, -1, 8],
 ];
 let contador = 0;
+lastSteps = false;
 const GaussJordan = (mat) => {
   AddDomMatrix(mat);
 };
@@ -90,7 +91,12 @@ const AddDomMatrix = (mat, paso = "") => {
                 const element = row[i].toString();
                 str += element + "</h2><h2>";
               }
-              str += "|</h2><h2>" + row[row.length - 1] + "</h2></div>";
+              lastSteps == false
+                ? (str += "|</h2><h2>" + row[row.length - 1] + "</h2></div>")
+                : (str +=
+                    "|</h2><h2>" +
+                    row[row.length - 1].toFixed(2) +
+                    "</h2></div>");
               return str;
             }
           })
